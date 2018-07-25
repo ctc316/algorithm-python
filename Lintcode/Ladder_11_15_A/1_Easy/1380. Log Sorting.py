@@ -3,41 +3,38 @@ class Solution:
     @param logs: the logs
     @return: the log after sorting
     """
+    def compare(self, x, y):
+        sep_x = x.find(" ")
+        id_x = x[:sep_x]
+        content_x = x[sep_x + 1:]
+        isalpha_x = content_x[0].isalpha()
+
+        sep_y = y.find(" ")
+        id_y = y[:sep_y]
+        content_y = y[sep_y + 1:]
+        isalpha_y = content_y[0].isalpha()
+
+        if not isalpha_x and not isalpha_y:
+            return 1
+
+        if not isalpha_y:
+            return -1
+
+        if not isalpha_x:
+            return 1
+
+        if content_x != content_y:
+            if content_x < content_y:
+                return -1
+            else:
+                return 1
+
+        if id_x < id_y:
+            return -1
+        else:
+            return 1
+
+
     def logSort(self, logs):
-
-        def cmp_to_key(mycmp):
-            'Convert a cmp= function into a key= function'
-            class K:
-                def __init__(self, obj, *args):
-                    self.obj = obj
-                def __lt__(self, other):
-                    return mycmp(self.obj, other.obj) < 0
-                def __gt__(self, other):
-                    return mycmp(self.obj, other.obj) > 0
-                def __eq__(self, other):
-                    return mycmp(self.obj, other.obj) == 0
-                def __le__(self, other):
-                    return mycmp(self.obj, other.obj) <= 0
-                def __ge__(self, other):
-                    return mycmp(self.obj, other.obj) >= 0
-                def __ne__(self, other):
-                    return mycmp(self.obj, other.obj) != 0
-            return K
-
-        def compare(x, y):
-            x_ = x.split(" ")
-            y_ = y.split(" ")
-            if len(x_) == len(y_):
-                for i in range(len(x_)):
-                    if x_[i] == y_[i]:
-                        continue
-                    if x_[i] < y_[i]:
-                        return -1
-                    else:
-                        return 1
-
-            return len(x_) - len(y_)
-
-
-        logs.sort(key=cmp_to_key(compare))
-        return logs
+        from functools import cmp_to_key
+        return sorted(logs, key=cmp_to_key(self.compare))
