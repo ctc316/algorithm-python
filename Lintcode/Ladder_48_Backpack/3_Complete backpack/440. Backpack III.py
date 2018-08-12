@@ -27,12 +27,12 @@ class Solution:
     @param m: An integer
     @return: an array
     """
-    
+
     '''
         size: [2,3,5,7]
         value:[1,5,2,4]
         10
-            
+
             0          5             10
             [0,0,0,0,0,0, 0, 0, 0, 0, 0]
         2,1 [0,0,1,1,1,1, 1, 1, 1, 1, 1]
@@ -46,6 +46,6 @@ class Solution:
         for i in range(len(A)):
             for j in range(A[i], m + 1):
                 dp[j] = max(dp[j], dp[j - A[i]] + V[i])
-        
+
         return dp[m]
 
