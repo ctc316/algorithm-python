@@ -12,12 +12,12 @@ class Solution:
         while j < t_len:
             while i < s_len and s[i] != t[j]:
                 i += 1
-            
+
             if i == s_len:
                 break
-            
+
             i += 1
             j += 1
-            
-                
+
+
         return j == t_len
