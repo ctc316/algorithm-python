@@ -1,0 +1,5 @@
+LETTER_NONE = ' '
+LETTER_X = 'X'
+LETTER_O = 'O'
+TURN_PLAYER = 'Player'
+TURN_COMPUTER = 'Compter'

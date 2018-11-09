@@ -27,18 +27,18 @@ class Solution:
                     if points[i].y == points[j].y:
                         duplicate += 1
                         continue
-                    
+
                     slope = sys.maxsize
                 else:
                     slope = (points[i].y - points[j].y) / (points[i].x - points[j].x)
-                
+
                 if slope not in slopes:
                     slopes[slope] = 2
                 else:
                     slopes[slope] += 1
-                
-            
+
+
             for val in slopes.values():
                 maxi = max(maxi, val + duplicate)
-                
+
         return maxi
