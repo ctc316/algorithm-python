@@ -1,0 +1,32 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+import random
+
+
+
+class RandomStore():
+    def __init__(self) -> None:
+        self.store = set()
+        
+    def insert(self, x: int) -> None:
+        self.store.add(x)
+
+    def delete(self, x: int) -> None:
+        self.store.remove(x)
+
+    def get_random(self) -> int:
+        return random.choice(list(self.store))
+    
+    
+"""
+preorder traverse
+2 1 3 4
+
+  2,1,2                   25%, 25%, 50%
+1,0,0  3,0,1        100%,0,0         50%,0,50%  
+         4,0,0                           100%,0,0
+"""
+r = RandomStore()
+r.insert(1)
+r.insert(2)
+print(r.get_random())
